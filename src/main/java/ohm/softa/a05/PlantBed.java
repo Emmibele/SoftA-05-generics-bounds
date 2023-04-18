@@ -13,6 +13,10 @@ public class PlantBed<T extends Plant> {
         plants.add(plant);
     }
 
+    public void removePlant(T plant) {
+        plants.removeElement(plant);
+    }
+
     public int size() {
         return plants.size();
     }
@@ -24,7 +28,6 @@ public class PlantBed<T extends Plant> {
             public boolean include(T item) {
                 return item.getColor() == color;
             }
-
         });
     }
 }

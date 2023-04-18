@@ -14,6 +14,7 @@ import ohm.softa.a05.model.Flower;
 import ohm.softa.a05.model.Plant;
 import ohm.softa.a05.model.PlantColor;
 import ohm.softa.a05.model.Shrub;
+import ohm.softa.a05.util.PlantBedUtility;
 
 public class PlantBedTest {
 
@@ -59,4 +60,19 @@ public class PlantBedTest {
         }
 
     }
+
+    @Test
+	void testRePot() {
+		PlantBed<Plant> output1 = new PlantBed<>();
+		PlantBed<Flower> output2 = new PlantBed<>();
+		// PlantBed<Shrub> output3 = new PlantBed<>();
+
+		PlantBedUtility.repot(flowerBed, output1, PlantColor.YELLOW);
+		PlantBedUtility.repot(flowerBed, output2, PlantColor.YELLOW);
+
+        assertEquals(flowerBed.getPlantsByColor(PlantColor.YELLOW).size(), 0 );
+        assertEquals(output1.size(), 1);
+
+    }
+
 }

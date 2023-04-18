@@ -18,6 +18,12 @@ public interface SimpleList<T> extends Iterable<T> {
 	void add(T o);
 
 	/**
+	 * Removes first Element with provided value from List
+	 * @param value
+	 */
+	void removeElement(T value);
+	
+	/**
 	 * @param clazz Class instance to solve the instantiation problem
 	 */
 	@SuppressWarnings("unchecked")
@@ -66,7 +72,7 @@ public interface SimpleList<T> extends Iterable<T> {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	default <R> SimpleList<R> map(Function<T, R> transform) {
+	default <R> SimpleList<R> map(Function<? super T, ? extends R> transform) {
 		SimpleList<R> result;
 		try {
 			result = (SimpleList<R>) getClass().newInstance();
